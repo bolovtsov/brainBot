@@ -7,7 +7,7 @@ bot = telebot.TeleBot(constans.token)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills!, {message.from_user.first_name}')
+    bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills!!!, {message.from_user.first_name}')
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
