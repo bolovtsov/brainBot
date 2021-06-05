@@ -1,4 +1,6 @@
 import telebot
+from telebot import types
+
 import constans
 
 bot = telebot.TeleBot(constans.token)
@@ -16,8 +18,8 @@ def get_text_messages(message):
 
 @bot.message_handler(commands = ['help'])
 def url(message):
-    markup = bot.InlineKeyboardMarkup()
-    btn_my_site = bot.InlineKeyboardButton(text='Наш сайт', url='https://brainskills.live')
+    markup = types.InlineKeyboardMarkup()
+    btn_my_site = types.InlineKeyboardButton(text='Наш сайт', url='https://brainskills.live')
     markup.add(btn_my_site)
     bot.send_message(message.chat.id, "Нажми на кнопку и перейди на наш сайт.", reply_markup = markup)
 
