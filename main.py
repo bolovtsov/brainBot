@@ -1,4 +1,5 @@
 import telebot
+from aiogram import types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 import constans
@@ -22,5 +23,9 @@ button_hi = KeyboardButton('Привет! 👋')
 
 greet_kb = ReplyKeyboardMarkup()
 greet_kb.add(button_hi)
+
+@bot.message_handler(commands=['help'])
+async def process_start_command(message: types.Message):
+    await message.reply("Привет!", reply_markup=bot.greet_kb)
 
 bot.polling(none_stop=True)
