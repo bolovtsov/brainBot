@@ -15,11 +15,5 @@ def get_text_messages(message):
     else:
         bot.send_message(message.from_user.id, 'Не понимаю, что это значит.')
 
-@bot.message_handler(commands = ['help'])
-def url(message):
-    markup = types.InlineKeyboardMarkup()
-    btn_my_site = types.InlineKeyboardButton(text='Наш сайт', url='https://brainskills.live')
-    markup.add(btn_my_site)
-    bot.send_message(message.chat.id, "Нажми на кнопку и перейди на наш сайт.", reply_markup = markup)
 
 bot.polling(none_stop=True)
