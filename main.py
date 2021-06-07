@@ -20,4 +20,12 @@ def get_text_messages(message):
     else:
         bot.send_message(message.from_user.id, 'Не понимаю, что это значит.')
 
+@bot.message_handler(commands=['help'])
+def start_message(message):
+    markup = telebot.types.InlineKeyboardMarkup()
+    markup.add(telebot.types.InlineKeyboardButton(text='Три', callback_data=3))
+    markup.add(telebot.types.InlineKeyboardButton(text='Четыре', callback_data=4))
+    markup.add(telebot.types.InlineKeyboardButton(text='Пять', callback_data=5))
+    bot.send_message(message.chat.id, text="Какая средняя оценка была у Вас в школе?", reply_markup=markup)
+
 bot.polling(none_stop=True)
