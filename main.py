@@ -1,7 +1,4 @@
 import telebot
-from aiogram import types
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-
 import constans
 
 bot = telebot.TeleBot(constans.token)
@@ -17,15 +14,5 @@ def get_text_messages(message):
         bot.send_message(message.from_user.id, 'Привет!')
     else:
         bot.send_message(message.from_user.id, 'Не понимаю, что это значит.')
-
-
-button_hi = KeyboardButton('Привет! 👋')
-
-greet_kb = ReplyKeyboardMarkup()
-greet_kb.add(button_hi)
-
-@bot.message_handler(commands=['help'])
-async def process_start_command(message: types.Message):
-    await message.reply("Привет!", reply_markup=bot.greet_kb)
 
 bot.polling(none_stop=True)
