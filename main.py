@@ -13,10 +13,10 @@ def start_message(message):
 @bot.message_handler(commands=['help'])
 def start_message(message):
     markup = telebot.types.InlineKeyboardMarkup()
-    markup.add(telebot.types.InlineKeyboardButton(text='Три', callback_data=3))
-    markup.add(telebot.types.InlineKeyboardButton(text='Четыре', callback_data=4))
-    markup.add(telebot.types.InlineKeyboardButton(text='Пять', callback_data=5))
-    bot.send_message(message.chat.id, text="Какая средняя оценка была у Вас в школе?", reply_markup=markup)
+    markup.add(telebot.types.InlineKeyboardButton(text='Введение в Python', callback_data=1))
+    markup.add(telebot.types.InlineKeyboardButton(text='Анализ данных на Python', callback_data=2))
+    markup.add(telebot.types.InlineKeyboardButton(text='SQL/Oracle', callback_data=3))
+    bot.send_message(message.chat.id, text="Какая программа вас интересует?", reply_markup=markup)
 
 @bot.callback_query_handler(func=lambda call: True)
 def query_handler(call):
@@ -34,9 +34,9 @@ def query_handler(call):
 def send_welcome(message):
     bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills, {message.from_user.first_name}!\n'
                           f'Здесь вы можете:\n'
-                          f'- узнать как работает подписка Brainskills?\n'
-                          f'- получать бесплатные материалы по Python, ML/DL, AI\n'
-                          f'- регистрироваться на бесплатные мероприятия')
+                          f'/help узнать как работает подписка Brainskills\n'
+                          f'/setting получать бесплатные материалы по Python, ML/DL, AI\n'
+                          f'/action регистрироваться на бесплатные мероприятия')
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
