@@ -32,10 +32,10 @@ def query_handler(call):
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills, {message.from_user.first_name}!'
-                          f'Здесь вы можете:'
-                          f'- узнать как работает подписка Brainskills?'
-                          f'- получать бесплатные материалы по Python, ML/DL, AI'
+    bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills, {message.from_user.first_name}!\n'
+                          f'Здесь вы можете:\n'
+                          f'- узнать как работает подписка Brainskills?\n'
+                          f'- получать бесплатные материалы по Python, ML/DL, AI\n'
                           f'- регистрироваться на бесплатные мероприятия')
 
 @bot.message_handler(content_types=['text'])
