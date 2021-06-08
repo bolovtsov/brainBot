@@ -3,11 +3,12 @@ import constans
 
 bot = telebot.TeleBot(constans.token)
 
-@bot.message_handler(commands=['start'])
+"""@bot.message_handler(commands=['start'])
 def start_message(message):
     keyboard = telebot.types.ReplyKeyboardMarkup(True)
     keyboard.row('Привет', 'Пока')
-    bot.send_message(message.chat.id, 'Приветствуем вас в сообществе Brainskills!!!', reply_markup=keyboard)
+    bot.send_message(message.chat.id, 'Приветствуем вас в сообществе Brainskills!!!', reply_markup=keyboard)"""
+
 
 @bot.message_handler(commands=['help'])
 def start_message(message):
@@ -29,9 +30,13 @@ def query_handler(call):
         answer = 'Вы отличник!'
     bot.send_message(call.message.chat.id, answer)
 
-"""@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills!!!, {message.from_user.first_name}')"""
+    bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills, {message.from_user.first_name}!'
+                          f'Здесь вы можете:'
+                          f'- узнать как работает подписка Brainskills?'
+                          f'- получать бесплатные материалы по Python, ML/DL, AI'
+                          f'- регистрироваться на бесплатные мероприятия')
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
