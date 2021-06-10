@@ -63,7 +63,7 @@ def send_welcome(message):
     bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills, {message.from_user.first_name}!\n'
                           f'Здесь вы можете:\n'
                           f'/help узнать как работает подписка Brainskills\n'
-                          f'/setting получить бесплатные материалы по Python, кейс и ML\n'
+                          f'/setting бесплатные материалы по Python, кейс и ML\n'
                           f'/action регистрироваться на бесплатные мероприятия')
 
 
