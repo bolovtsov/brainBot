@@ -49,6 +49,12 @@ def query_handler(call):
                  f'4 - Ссылки и основные функции\n' \
                  f'5 - Продвинутые функции\n' \
                  f'6 - ВПР, ГПР, индексы и практические задачи\n'
+    elif call.data == '11':
+        answer = 'https://youtu.be/znRUCEXVjfk'
+    elif call.data == '21':
+        answer = 'https://youtu.be/DAr7mqX7hqI'
+    elif call.data == '31':
+        answer = 'https://youtu.be/WZPIB-v5QPg'
     bot.send_message(call.message.chat.id, answer)
 
 
@@ -64,9 +70,9 @@ def send_welcome(message):
 @bot.message_handler(commands=['setting'])
 def start_message(message):
     markup = telebot.types.InlineKeyboardMarkup()
-    markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные материалы по Python', callback_data=1))
-    markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные кейс', callback_data=2))
-    markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные материалы по Python', callback_data=3))
+    markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные материалы по Python', callback_data=11))
+    markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные кейс', callback_data=21))
+    markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные материалы по Python', callback_data=31))
     bot.send_message(message.chat.id, text="Что по плечу?", reply_markup=markup)
 
 
