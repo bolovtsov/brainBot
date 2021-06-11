@@ -19,13 +19,13 @@ def query_handler(call):
     bot.answer_callback_query(callback_query_id=call.id, text='А ты в тренде!')
     answer = ''
     if call.data == '1':
-        answer = program_SQL
+        answer = constants.program_SQL
     elif call.data == '2':
-        answer = modules_Python_AI
+        answer = constants.modules_Python_AI
     elif call.data == '3':
-        answer = program_Excel
+        answer = constants.program_Excel
     elif call.data == '11':
-        answer = free_Python_base
+        answer = constants.free_Python_base
     elif call.data == '21':
         answer = 'https://youtu.be/DAr7mqX7hqI'
     elif call.data == '31':
