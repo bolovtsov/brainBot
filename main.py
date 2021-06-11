@@ -31,7 +31,7 @@ def query_handler(call):
     elif call.data == '12':
         answer = constants.free_ML_first
     elif call.data == '20':
-        help_message('Welcome')
+        bot.register_next_step_handler(answer, help_message)
         answer = ''
     elif call.data == '21':
         #help_message()
