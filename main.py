@@ -19,7 +19,7 @@ def any_messages(message):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     if call.data == "mainmenu":
-        keyboard_main = telebot.types.InlineKeyboardMarkup(row_width=4)
+        keyboard_main = telebot.types.InlineKeyboardMarkup(row_width=2)
         about_company_button = telebot.types.InlineKeyboardButton(text='О Brainskills', callback_data="about")
         courses_button = telebot.types.InlineKeyboardButton(text='курсы', callback_data="courses")
         free_button = telebot.types.InlineKeyboardButton(text='материалы', callback_data="free")
