@@ -12,7 +12,7 @@ def any_messages(message):
     courses_button = telebot.types.InlineKeyboardButton(text='курсы', callback_data="courses")
     free_button = telebot.types.InlineKeyboardButton(text='материалы', callback_data="free")
     registration_button = telebot.types.InlineKeyboardButton(text='мероприятия', callback_data="registration")
-    key_board_main.add(about_company_button, courses_button, free_button, registration_button)
+    keyboard_main.add(about_company_button, courses_button, free_button, registration_button)
     bot.send_message(message.chat.id, text="Что интересно?", reply_markup=keyboard_main)
 
 
