@@ -6,14 +6,23 @@ bot = telebot.TeleBot(os.environ.get('TOKEN'))
 
 @bot.message_handler(content_types=['text'])
 def any_messages(message):
-    key_board_main = telebot.types.InlineKeyboardMarkup(row_width=4)
+    keyboard_main = telebot.types.InlineKeyboardMarkup(row_width=4)
     about_company_button = telebot.types.InlineKeyboardButton(text='О Brainskills', callback_data="about")
     courses_button = telebot.types.InlineKeyboardButton(text='курсы', callback_data="courses")
     free_button = telebot.types.InlineKeyboardButton(text='материалы', callback_data="free")
     registration_button = telebot.types.InlineKeyboardButton(text='мероприятия', callback_data="registration")
     key_board_main.add(about_company_button, courses_button, free_button, registration_button)
-    bot.send_message(message.chat.id, text="Что интересно?", reply_markup=key_board_main)
+    bot.send_message(message.chat.id, text="Что интересно?", reply_markup=keyboard_main)
 
+@bot.callback_query_handler(func=lambda call: True)
+def callback_inline(call):
+    if call.data == 'courses':
+        keyboard_courses = telebot.types.InlineKeyboardMarkup(row_width=3)
+        python_button = telebot.types.InlineKeyboardButton(text='Анализ данных на Python', callback_data="python")
+        sql_button = telebot.types.InlineKeyboardButton(text='SQL/Oracle', callback_data="sql")
+        excel_button = telebot.types.InlineKeyboardButton(text='Базовый Excel', callback_data="excel")
+        keyboard_courses.add(python_button, sql_button, excel_button)
+        bot.edit_message_text(call.massage.chat.id, massage_id=call.massage.message_id, text="Курсы", reply_markup=keyboard_courses)
 
 """@bot.message_handler(commands=['help'])
 def help_message(message):
