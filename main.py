@@ -1,17 +1,12 @@
 import telebot
 import os
+import constants
 
 bot = telebot.TeleBot(os.environ.get('TOKEN'))
 
-"""@bot.message_handler(commands=['start'])
-def start_message(message):
-    keyboard = telebot.types.ReplyKeyboardMarkup(True)
-    keyboard.row('Привет', 'Пока')
-    bot.send_message(message.chat.id, 'Приветствуем вас в сообществе Brainskills!!!', reply_markup=keyboard)"""
-
 
 @bot.message_handler(commands=['help'])
-def start_message(message):
+def help_message(message):
     markup = telebot.types.InlineKeyboardMarkup()
     markup.add(telebot.types.InlineKeyboardButton(text='SQL/Oracle', callback_data=1))
     markup.add(telebot.types.InlineKeyboardButton(text='Анализ данных на Python', callback_data=2))
@@ -24,36 +19,13 @@ def query_handler(call):
     bot.answer_callback_query(callback_query_id=call.id, text='А ты в тренде!')
     answer = ''
     if call.data == '1':
-        answer = f'SQL/Oracle это 10 недель:\n' \
-                 f'1 - Связи в базах данных\n' \
-                 f'2 - Создание таблиц\n' \
-                 f'3 - DML и индексы\n' \
-                 f'4 - Запросы к нескольким таблицам\n' \
-                 f'5 - Условия для агрегатных функций\n' \
-                 f'6 - Промышленный запрос\n' \
-                 f'7 - Транзакции, представления\n' \
-                 f'8 - Операторы, циклы\n' \
-                 f'9 - Курсоры, хранимые процедуры\n' \
-                 f'10 - Триггеры, исключения'
+        answer = program_SQL
     elif call.data == '2':
-        answer = f'Анализ данных на Python это 7 модулей:\n' \
-                 f'1 - Введение в Python\n' \
-                 f'2 - Библиотеки Python\n' \
-                 f'3 - ООП и паттерны \n' \
-                 f'4 - Математика для Анализа данных \n' \
-                 f'5 - Машинное обучение\n' \
-                 f'6 - Нейронные сети\n' \
-                 f'7 - Кейсы в портфолио '
+        answer = modules_Python_AI
     elif call.data == '3':
-        answer = f'Базовый Excel это 6 недель:\n' \
-                 f'1 - Структура документа Excel\n' \
-                 f'2 - Базовое форматирование и фильтры\n' \
-                 f'3 - Google таблицы и автозаполнение \n' \
-                 f'4 - Ссылки и основные функции\n' \
-                 f'5 - Продвинутые функции\n' \
-                 f'6 - ВПР, ГПР, индексы и практические задачи\n'
+        answer = program_Excel
     elif call.data == '11':
-        answer = 'https://youtu.be/znRUCEXVjfk'
+        answer = free_Python_base
     elif call.data == '21':
         answer = 'https://youtu.be/DAr7mqX7hqI'
     elif call.data == '31':
@@ -65,13 +37,13 @@ def query_handler(call):
 def send_welcome(message):
     bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills, {message.from_user.first_name}!\n'
                           f'Здесь вы можете:\n'
-                          f'/help узнать как работает подписка Brainskills\n'
+                          f'/help программы курсов Brainskills\n'
                           f'/setting бесплатные материалы по Python, кейс и ML\n'
-                          f'/action регистрироваться на бесплатные мероприятия')
+                          f'/action регистрация на бесплатные мероприятия')
 
 
 @bot.message_handler(commands=['setting'])
-def start_message(message):
+def setting_message(message):
     markup = telebot.types.InlineKeyboardMarkup()
     markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные материалы по Python', callback_data=11))
     markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные кейс', callback_data=21))
@@ -81,10 +53,18 @@ def start_message(message):
 
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
-    if message.text.lower() == 'привет':
-        bot.send_message(message.from_user.id, 'Привет!')
-    else:
-        bot.send_message(message.from_user.id, 'Не понимаю, что это значит.')
+    markup = telebot.types.InlineKeyboardMarkup()
+    markup.add(telebot.types.InlineKeyboardButton(text='Чем бот будет полезен?', callback_data=111))
+    markup.add(telebot.types.InlineKeyboardButton(text='программы курсов Brainskills', callback_data=211))
+    markup.add(telebot.types.InlineKeyboardButton(text='бесплатные материалы по Python, кейс и ML', callback_data=311))
+    markup.add(telebot.types.InlineKeyboardButton(text='регистрация на бесплатные материалы', callback_data=411))
+    bot.send_message(message.chat.id, text="Выберете одно из действий:", reply_markup=markup)
 
 
 bot.polling(none_stop=True)
+
+"""@bot.message_handler(commands=['start'])
+def start_message(message):
+    keyboard = telebot.types.ReplyKeyboardMarkup(True)
+    keyboard.row('Привет', 'Пока')
+    bot.send_message(message.chat.id, 'Приветствуем вас в сообществе Brainskills!!!', reply_markup=keyboard)"""
