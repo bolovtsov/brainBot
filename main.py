@@ -16,7 +16,7 @@ def any_messages(message):
     bot.send_message(message.chat.id, text="Что интересно?", reply_markup=keyboard_main)
 
 
-"""@bot.callback_query_handler(func=lambda call: True)
+@bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     if call.data == "courses":
         keyboard_courses = telebot.types.InlineKeyboardMarkup()
@@ -25,7 +25,7 @@ def callback_inline(call):
         excel_button = telebot.types.InlineKeyboardButton(text='Базовый Excel', callback_data="excel")
         keyboard_courses.add(python_button, sql_button, excel_button)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Курсы",
-                              reply_markup=keyboard_courses)"""
+                              reply_markup=keyboard_courses)
 
 
 bot.polling(none_stop=True)
