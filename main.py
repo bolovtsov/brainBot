@@ -31,8 +31,8 @@ def query_handler(call):
     elif call.data == '12':
         answer = constants.free_ML_first
     elif call.data == '20':
-        #send_welcome()
-        answer = constants.free_ML_first
+        send_welcome()
+        answer = ''
     elif call.data == '21':
         #help_message()
         answer = constants.free_ML_first
@@ -47,7 +47,7 @@ def query_handler(call):
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills, {message.from_user.first_name}!\n, '
+    bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills, {message.from_user.first_name}!\n'
                           f'{constants.welcome_message}'
                           )
 
