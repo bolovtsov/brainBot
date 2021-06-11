@@ -4,8 +4,18 @@ import constants
 
 bot = telebot.TeleBot(os.environ.get('TOKEN'))
 
+@bot.message_handler(content_types=['text'])
+def any_messages(message):
+    key_board_main = telebot.types.InlineKeyboardMarkup(row_width=4)
+    about_company_button = telebot.types.InlineKeyboardButton(text='О Brainskills', callback_data="about")
+    courses_button = telebot.types.InlineKeyboardButton(text='курсы', callback_data="courses")
+    free_button = telebot.types.InlineKeyboardButton(text='материалы', callback_data="free")
+    registration_button = telebot.types.InlineKeyboardButton(text='мероприятия', callback_data="registration")
+    key_board_main.add(about_company_button, courses_button, free_button, registration_button)
+    bot.send_message(message.chat.id, text="Что интересно?", reply_markup=key_board_main)
 
-@bot.message_handler(commands=['help'])
+
+"""@bot.message_handler(commands=['help'])
 def help_message(message):
     markup = telebot.types.InlineKeyboardMarkup()
     markup.add(telebot.types.InlineKeyboardButton(text='SQL/Oracle', callback_data=1))
@@ -50,6 +60,13 @@ def get_ex_callback(call):
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
+    markup = telebot.types.InlineKeyboardMarkup()
+    markup.add(telebot.types.InlineKeyboardButton(text='О Brainskills', callback_data=20))
+    markup.add(telebot.types.InlineKeyboardButton(text='программы курсов Brainskills', callback_data=21))
+    markup.add(telebot.types.InlineKeyboardButton(text='бесплатные материалы по Python, кейс и ML', callback_data=22))
+    markup.add(telebot.types.InlineKeyboardButton(text='регистрация на бесплатные материалы', callback_data=23))
+    bot.send_message(message.chat.id, text="Выберете одно из действий:", reply_markup=markup)
+
     bot.reply_to(message, f'Приветствуем вас в сообществе Brainskills, {message.from_user.first_name}!\n'
                           f'{constants.welcome_message}'
                           )
@@ -61,17 +78,7 @@ def setting_message(message):
     markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные материалы по Python', callback_data=10))
     markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные кейс', callback_data=11))
     markup.add(telebot.types.InlineKeyboardButton(text='Бесплатные материалы по Python', callback_data=12))
-    bot.send_message(message.chat.id, text="Что по плечу?", reply_markup=markup)
-
-
-@bot.message_handler(content_types=['text'])
-def get_text_messages(message):
-    markup = telebot.types.InlineKeyboardMarkup()
-    markup.add(telebot.types.InlineKeyboardButton(text='О Brainskills', callback_data=20))
-    markup.add(telebot.types.InlineKeyboardButton(text='программы курсов Brainskills', callback_data=21))
-    markup.add(telebot.types.InlineKeyboardButton(text='бесплатные материалы по Python, кейс и ML', callback_data=22))
-    markup.add(telebot.types.InlineKeyboardButton(text='регистрация на бесплатные материалы', callback_data=23))
-    bot.send_message(message.chat.id, text="Выберете одно из действий:", reply_markup=markup)
+    bot.send_message(message.chat.id, text="Что по плечу?", reply_markup=markup)"""
 
 
 bot.polling(none_stop=True)
