@@ -31,8 +31,11 @@ def callback_inline(call):
         base_python_button = telebot.types.InlineKeyboardButton(text='материалы по Python', callback_data='free_base_py')
         case_button = telebot.types.InlineKeyboardButton(text='кейс', callback_data='free_case')
         ml_button = telebot.types.InlineKeyboardButton(text='материалы по ML', callback_data='free_ML')
+        keyboard_free.add(base_python_button, case_button, ml_button)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Материалы",
                               reply_markup=keyboard_free)
+    if call.data == "about":
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=constants.welcome_message)
 
 
 bot.polling(none_stop=True)
