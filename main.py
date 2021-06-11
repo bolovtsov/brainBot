@@ -26,6 +26,13 @@ def callback_inline(call):
         keyboard_courses.add(python_button, sql_button, excel_button)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Курсы",
                               reply_markup=keyboard_courses)
+    if call.data == "free":
+        keyboard_free = telebot.types.InlineKeyboardMarkup()
+        base_python_button = telebot.types.InlineKeyboardButton(text='материалы по Python', callback_data='free_base_py')
+        case_button = telebot.types.InlineKeyboardButton(text='кейс', callback_data='free_case')
+        ml_button = telebot.types.InlineKeyboardButton(text='материалы по ML', callback_data='free_ML')
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Материалы",
+                              reply_markup=keyboard_free)
 
 
 bot.polling(none_stop=True)
