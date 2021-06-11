@@ -31,13 +31,17 @@ def query_handler(call):
     elif call.data == '12':
         answer = constants.free_ML_first
     elif call.data == '20':
-        send_welcome()
+        #send_welcome()
+        answer = constants.free_ML_first
     elif call.data == '21':
-        help_message()
+        #help_message()
+        answer = constants.free_ML_first
     elif call.data == '22':
-        setting_message()
+        #setting_message()
+        answer = constants.free_ML_first
     elif call.data == '23':
-        setting_message()
+        #setting_message()
+        answer = constants.free_ML_first
     bot.send_message(call.message.chat.id, answer)
 
 
