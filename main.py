@@ -1,5 +1,4 @@
 import telebot
-import constans
 import os
 
 bot = telebot.TeleBot(os.environ.get('TOKEN'))
@@ -38,9 +37,12 @@ def query_handler(call):
                  f'10 - Триггеры, исключения'
     elif call.data == '2':
         answer = f'Анализ данных на Python это 7 модулей:\n' \
-                 f'1 - Введение в Python\n2 - Библиотеки Python\n3 - ООП и ' \
-                 f'паттерны \n4 - Математика для Анализа данных \n' \
-                 f'5 - Машинное обучение\n6 - Нейронные сети\n' \
+                 f'1 - Введение в Python\n' \
+                 f'2 - Библиотеки Python\n' \
+                 f'3 - ООП и паттерны \n' \
+                 f'4 - Математика для Анализа данных \n' \
+                 f'5 - Машинное обучение\n' \
+                 f'6 - Нейронные сети\n' \
                  f'7 - Кейсы в портфолио '
     elif call.data == '3':
         answer = f'Базовый Excel это 6 недель:\n' \
