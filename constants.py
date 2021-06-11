@@ -30,3 +30,14 @@ program_Excel = f'Базовый Excel это 6 недель:\n' \
                 f'6 - ВПР, ГПР, индексы и практические задачи\n'
 
 free_Python_base = 'https://youtu.be/znRUCEXVjfk'
+
+free_case_first = 'https://youtu.be/DAr7mqX7hqI'
+
+free_ML_first = 'https://youtu.be/WZPIB-v5QPg'
+
+welcome_message = f'Изучите Python от А до Я, анализ данных и нейросети\n' \
+                  f'Мы первый в СНГ проект, где вы получаете специальность за символическую плату.\n' \
+                  f'А мы зарабатываем на вашем трудоустройстве\n' \
+                  f'/help программы курсов Brainskills\n' \
+                  f'/setting бесплатные материалы по Python, кейс и ML\n' \
+                  f'/action регистрация на бесплатные мероприятия'
