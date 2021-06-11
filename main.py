@@ -31,7 +31,7 @@ def query_handler(call):
     elif call.data == '12':
         answer = constants.free_ML_first
     elif call.data == '20':
-        bot.register_next_step_handler(answer, help_message)
+        get_ex_callback(call)
         answer = ''
     elif call.data == '21':
         #help_message()
@@ -44,6 +44,9 @@ def query_handler(call):
         answer = constants.free_ML_first
     bot.send_message(call.message.chat.id, answer)
 
+def get_ex_callback(call):
+    bot.answer_callback_query(call.id)
+    help_message(call.data)
 
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
