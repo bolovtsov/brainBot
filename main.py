@@ -1,7 +1,8 @@
 import telebot
 import constans
+import os
 
-bot = telebot.TeleBot("TOKEN")
+bot = telebot.TeleBot(os.environ.get('TOKEN'))
 
 """@bot.message_handler(commands=['start'])
 def start_message(message):
