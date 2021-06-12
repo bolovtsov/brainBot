@@ -41,8 +41,8 @@ def callback_inline(call):
         back_button = telebot.types.InlineKeyboardButton(text='Назад', callback_data="mainmenu")
         keyboard_courses.add(python_button)
         keyboard_courses.add(sql_button, excel_button, back_button)
-        #with open('img/2.png', 'rb') as notebook:
-            #bot.edit_message_media(chat_id=call.message.chat.id, message_id=call.message.message_id, media=notebook)
+        with open('img/2.png', 'rb') as notebook:
+            bot.edit_message_media(chat_id=call.message.chat.id, message_id=call.message.message_id, media=telebot.types.InputMedia(type='photo', media=notebook))
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Курсы",
                               reply_markup=keyboard_courses)
     if call.data == "free":
