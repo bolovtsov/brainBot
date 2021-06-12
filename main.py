@@ -16,7 +16,7 @@ def any_messages(message):
     keyboard_main.add(courses_button, free_button)
     keyboard_main.add(registration_button)
     img_book = open('img/1.png', 'rb')
-    bot.send_photo(message.chat.id, img_book, reply_markup=keyboard_main)
+    bot.send_photo(message.chat.id, img_book)
     bot.send_message(message.chat.id, text="Welcome!", reply_markup=keyboard_main)
 
 
@@ -42,8 +42,8 @@ def callback_inline(call):
         keyboard_courses.add(python_button)
         keyboard_courses.add(sql_button, excel_button, back_button)
         with open('img/2.png', 'rb') as notebook:
-            bot.edit_message_media(media=types.InputMedia(type='photo', media=notebook), chat_id=call.message.chat.id,
-                                   message_id=call.message.message_id, reply_markup=keyboard_courses)
+            bot.edit_message_media(media=telebot.types.InputMedia(type='photo', media=notebook), chat_id=call.message.chat.id,
+                                   message_id=call.message.message_id)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Курсы",
                               reply_markup=keyboard_courses)
     if call.data == "free":
@@ -55,7 +55,7 @@ def callback_inline(call):
         keyboard_free.add(base_python_button)
         keyboard_free.add(case_button, ml_button, back_button)
         with open('img/2.png', 'rb') as notebook:
-            bot.edit_message_media(media=types.InputMedia(type='photo', media=notebook), chat_id=call.message.chat.id,
+            bot.edit_message_media(media=telebot.types.InputMedia(type='photo', media=notebook), chat_id=call.message.chat.id,
                                    message_id=call.message.message_id, reply_markup=keyboard_free)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Материалы",
                               reply_markup=keyboard_free)
