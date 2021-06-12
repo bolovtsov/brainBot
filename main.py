@@ -15,6 +15,8 @@ def any_messages(message):
     keyboard_main.add(about_company_button)
     keyboard_main.add(courses_button, free_button)
     keyboard_main.add(registration_button)
+    img = open('img/1.png', 'rb')
+    bot.send_photo(message.chat.id, img)
     bot.send_message(message.chat.id, text="Что интересно?", reply_markup=keyboard_main)
 
 
@@ -26,7 +28,9 @@ def callback_inline(call):
         courses_button = telebot.types.InlineKeyboardButton(text='курсы', callback_data="courses")
         free_button = telebot.types.InlineKeyboardButton(text='материалы', callback_data="free")
         registration_button = telebot.types.InlineKeyboardButton(text='мероприятия', callback_data="registration")
-        keyboard_main.add(about_company_button, courses_button, free_button, registration_button)
+        keyboard_main.add(about_company_button)
+        keyboard_main.add(courses_button, free_button)
+        keyboard_main.add(registration_button)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="то интересно?",
                               reply_markup=keyboard_main)
     if call.data == "courses":
