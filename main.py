@@ -42,7 +42,7 @@ def callback_inline(call):
         keyboard_courses.add(python_button)
         keyboard_courses.add(sql_button, excel_button, back_button)
         with open('img/2.png', 'rb') as notebook:
-            bot.edit_message_media(media=telebot.types.InputMediaPhoto("https://drive.google.com/file/d/10K-lTslaUNkn0c48hSPmzf5HVC3_koBw/view?usp=sharing"),
+            bot.edit_message_media(media=telebot.types.InputMedia("https://drive.google.com/file/d/10K-lTslaUNkn0c48hSPmzf5HVC3_koBw/view?usp=sharing"),
                                    chat_id=call.message.chat.id,
                                    message_id=call.message.message_id)
             #bot.edit_message_media(chat_id=call.message.chat.id, message_id=call.message.message_id, media=telebot.InputMedia(type='photo', media=notebook))
