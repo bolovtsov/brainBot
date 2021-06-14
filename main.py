@@ -44,7 +44,7 @@ def callback_inline(call):
         with open('img/2.png', 'rb') as notebook:
             bot.edit_message_media(chat_id=call.message.chat.id,
                                message_id=call.message.message_id,
-                               media=telebot.types.InputMediaPhoto(notebook))
+                               media=telebot.types.InputMediaPhoto(notebook, caption='Test editMessageMedia 0'))
         #bot.edit_message_media(chat_id=call.message.chat.id,
                               # message_id=call.message.message_id,
                               # media=telebot.types.InputMediaPhoto("https://drive.google.com/file/d/10K-lTslaUNkn0c48hSPmzf5HVC3_koBw/view?usp=sharing"))
