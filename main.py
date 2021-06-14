@@ -31,7 +31,7 @@ def callback_inline(call):
         keyboard_main.add(about_company_button)
         keyboard_main.add(courses_button, free_button)
         keyboard_main.add(registration_button)
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="то интересно?",
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Что интересно?",
                               reply_markup=keyboard_main)
     if call.data == "courses":
         keyboard_courses = telebot.types.InlineKeyboardMarkup()
